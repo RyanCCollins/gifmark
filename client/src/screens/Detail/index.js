@@ -1,6 +1,5 @@
 // @flow
 import React from 'react'
-import styled from 'styled-components/native'
 import { compose, withProps } from 'recompose'
 import { ActivityIndicator } from 'react-native'
 import { withRouter } from 'react-router-native'
