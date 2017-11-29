@@ -4984,6 +4984,10 @@ react-native-branch@2.0.0-beta.3:
   version "2.0.0-beta.3"
   resolved "https://registry.yarnpkg.com/react-native-branch/-/react-native-branch-2.0.0-beta.3.tgz#2167af86bbc9f964bd45bd5f37684e5b54965e32"
 
+react-native-config@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-0.10.0.tgz#7ecabfcdc5f8fe34ba42b56b043626eb72d232fe"
+
 react-native-elements@^0.18.4:
   version "0.18.4"
   resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.18.4.tgz#f940ec226437af96db79c9e6087e1df9c50184f9"

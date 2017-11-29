@@ -3,6 +3,7 @@ import React from 'react'
 import { compose, withProps } from 'recompose'
 import { ActivityIndicator } from 'react-native'
 import { withRouter } from 'react-router-native'
+import { getGiphyAPIUrl } from '../../utils/api'
 import { withLoadOnMount } from '../../utils/HOCs'
 import { Container, Image } from './styledcomponents'
 
@@ -29,5 +30,5 @@ export default compose(
   withProps(({ location }) => ({
     id: new URLSearchParams(location.search).get('id'),
   })),
-  withLoadOnMount(props => `https://api.giphy.com/v1/gifs/${props.id}?api_key=JbT4J6jsj1DhzgYZ2ds3qoCWXMhEdxT7`, 'image', json => json.data.images.original),
+  withLoadOnMount(props => getGiphyAPIUrl(`/gifs/${props.id}`), 'image', json => json.data.images.original),
 )(Detail)

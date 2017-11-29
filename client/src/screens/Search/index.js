@@ -1,10 +1,10 @@
 // @flow
 import React from 'react'
-import styled from 'styled-components/native'
 import { compose, withHandlers, withState, lifecycle } from 'recompose'
 import { Keyboard, Dimensions } from 'react-native'
 import { SearchBar } from 'react-native-elements'
 import { Link } from 'react-router-native'
+import { getGiphyAPIUrl } from '../../utils/api'
 import { Container, TopView, Contents, Grid, Image } from './styledcomponents'
 
 type Props = {
@@ -60,7 +60,7 @@ export default compose(
       }
     },
     handleSearch: ({ searchText, setResults }) => () => {
-      const url = `https://api.giphy.com/v1/gifs/search?api_key=JbT4J6jsj1DhzgYZ2ds3qoCWXMhEdxT7&q=${encodeURIComponent(searchText)}&limit=25&offset=0&rating=G&lang=en`
+      const url = `${getGiphyAPIUrl('/gifs/search')}&q=${encodeURIComponent(searchText)}&limit=25&offset=0&rating=G&lang=en`
       fetch(url)
         .then(res => res.json())
         .then(json => setResults(json.data))
