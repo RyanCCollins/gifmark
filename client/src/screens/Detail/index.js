@@ -5,19 +5,7 @@ import { compose, withProps } from 'recompose'
 import { ActivityIndicator } from 'react-native'
 import { withRouter } from 'react-router-native'
 import { withLoadOnMount } from '../../utils/HOCs'
-
-const Container = styled.View`
-  display: flex;
-  background-color: #fff;
-  max-height: 100%;
-  align-items: center;
-  justify-content: center;
-`
-
-const Image = styled.Image`
-  height: 100%;
-  width: 100%;
-`
+import { Container, Image } from './styledcomponents'
 
 type Props = {
   image: {},
