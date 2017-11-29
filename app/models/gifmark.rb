@@ -1,0 +1,2 @@
+class Gifmark < ApplicationRecord
+end
