@@ -2,75 +2,48 @@
 import React from 'react'
 import styled from 'styled-components/native'
 import { compose, withHandlers, withState, lifecycle } from 'recompose'
-import { Text } from 'react-native'
-
-const Container = styled.View`
-  display: flex;
-  background-color: #fff;
-  justify-content: center;
-`
-
-const TopView = styled.View`
-  width: 100%;
-  padding: 10px;
-  display: flex;
-  margin: 40px 0 40px 0;
-  align-items: center;
-`
-
-const SearchInput = styled.TextInput`
-  padding: 10px;
-  width: 100%;
-  border: 1px solid blue;
-  border-radius: 50px;
-`
-
-const Contents = TopView.extend`
-  align-self: stretch;
-  margin: 0px;
-`
-
-const Grid = styled.FlatList`
-  width: 100%;
-`
-
-const Image = styled.Image`
-  min-height: 100px;
-  min-width: 100px;
-  margin: 5px;
-`
+import { Keyboard, Dimensions } from 'react-native'
+import { SearchBar } from 'react-native-elements'
+import { Link } from 'react-router-native'
+import { Container, TopView, Contents, Grid, Image } from './styledcomponents'
 
 type Props = {
   searchText: string,
   setSearchText: (text: string) => void,
+  handleReturn: (e: Event) => void,
   results: [],
 }
 
 const Search = ({
-  searchText,
   setSearchText,
   results,
+  handleReturn,
 }: Props) => (
-  <Container>
+  <Container
+    contentContainerStyle={{ justifyContent: 'center' }}
+  >
     <TopView>
-      <SearchInput
-        value={searchText}
+      <SearchBar
+        onKeyPress={handleReturn}
+        lightTheme
+        containerStyle={{ width: '100%' }}
         onChangeText={setSearchText}
+        onClearText={() => setSearchText('')}
         placeholder="Type here to search"
       />
     </TopView>
     <Contents>
-      <Text>
-        Search Text: {searchText}
-      </Text>
       <Grid
         numColumns={3}
-        renderItem={({ item }) =>
-          (<Image
-            key={item.url}
-            source={{ uri: item.images.fixed_height_small.url }}
-          />)
-        }
+        renderItem={({ item }) => (
+          <Link href="/" to={`/detail?id=${encodeURIComponent(item.id)}`}>
+            <Image
+              itemWidth={(Dimensions.get('window').width / 3) - 15}
+              key={item.url}
+              source={{ uri: item.images.fixed_height_small.url }}
+            />
+          </Link>
+        )}
         data={results}
       />
     </Contents>
@@ -81,6 +54,11 @@ export default compose(
   withState('searchText', 'setSearchText', ''),
   withState('results', 'setResults', []),
   withHandlers({
+    handleReturn: () => ({ keyCode }) => {
+      if (keyCode === 13) {
+        Keyboard.dismiss()
+      }
+    },
     handleSearch: ({ searchText, setResults }) => () => {
       const url = `https://api.giphy.com/v1/gifs/search?api_key=JbT4J6jsj1DhzgYZ2ds3qoCWXMhEdxT7&q=${encodeURIComponent(searchText)}&limit=25&offset=0&rating=G&lang=en`
       fetch(url)

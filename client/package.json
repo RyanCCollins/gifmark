@@ -31,9 +31,12 @@
     "flow-bin": "^0.59.0",
     "react": "16.0.0",
     "react-native": "0.50.3",
+    "react-native-elements": "^0.18.4",
     "react-redux": "^5.0.6",
+    "react-router-native": "^4.2.0",
     "recompose": "^0.25.0",
     "redux": "^3.7.2",
-    "styled-components": "^2.1.2"
+    "styled-components": "^2.1.2",
+    "url-search-params-polyfill": "^2.0.1"
   }
 }
