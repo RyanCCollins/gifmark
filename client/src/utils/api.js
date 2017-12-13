@@ -1,5 +1,5 @@
-import Config from 'react-native-config'
+import { GIPHY_URL, API_KEY, API_URL } from 'react-native-dotenv'
 
-export const getGiphyAPIUrl = path => `${Config.GIPHY_URL}${path}?api_key=${Config.API_KEY}`
+export const getGiphyAPIUrl = path => `${GIPHY_URL}${path}?api_key=${API_KEY}`
 
-export const getApiUrl = Config.API_URL
+export const getApiUrl = API_URL

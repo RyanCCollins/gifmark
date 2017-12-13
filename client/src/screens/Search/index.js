@@ -61,6 +61,7 @@ export default compose(
     },
     handleSearch: ({ searchText, setResults }) => () => {
       const url = `${getGiphyAPIUrl('/gifs/search')}&q=${encodeURIComponent(searchText)}&limit=25&offset=0&rating=G&lang=en`
+      console.log(`Making fetch to ${url}`)
       fetch(url)
         .then(res => res.json())
         .then(json => setResults(json.data))
