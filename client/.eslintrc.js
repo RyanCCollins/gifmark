@@ -23,6 +23,11 @@ module.exports = {
       "allowBind": true
     }]
   },
+  "settings": {
+    "flowtype-errors": {
+      "flowDir": "./client"
+    }
+  },
   "plugins": [
     "react",
     "jsx-a11y",
