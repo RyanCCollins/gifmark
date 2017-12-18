@@ -15,9 +15,9 @@ type Props = {
 }
 
 const Search = ({
-  setSearchText,
   results,
   handleReturn,
+  setSearchText,
 }: Props) => (
   <Container
     contentContainerStyle={{ justifyContent: 'center' }}
